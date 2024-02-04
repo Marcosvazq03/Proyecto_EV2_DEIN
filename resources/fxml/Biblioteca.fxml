@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BibliotecaController">
+   <center>
+      <TabPane prefHeight="687.0" prefWidth="962.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tabAlumnos" text="Alumnos">
+               <content>
+                  <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                     <children>
+                        <TextField fx:id="tfBuscarAlumnos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buscarAlumno" prefHeight="25.0" prefWidth="248.0" promptText="Buscar" />
+                        <TableView fx:id="tvAlumnos" prefHeight="492.0" prefWidth="937.0">
+                          <columns>
+                            <TableColumn fx:id="tcDniAlumno" prefWidth="156.3642635345459" text="DNI" />
+                              <TableColumn fx:id="tcNombreAlumno" prefWidth="258.1827392578125" text="Nombre" />
+                              <TableColumn fx:id="tcApellido1Alumno" prefWidth="253.6373291015625" text="Primer Apellido" />
+                              <TableColumn fx:id="tcApellido2Alumno" prefWidth="270.0009765625" text="Segundo Apellido" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnAnadirAlumno" mnemonicParsing="false" onAction="#anadirAlumno" text="Añadir">
+                           <tooltip>
+                              <Tooltip text="Añadir alumno" />
+                           </tooltip></Button>
+                     </children>
+                  </FlowPane>
+               </content>
+          </Tab>
+            <Tab fx:id="tabLibros" text="Libros">
+               <content>
+                  <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                     <children>
+                        <FlowPane alignment="CENTER_LEFT" hgap="30.0" prefHeight="50.0" prefWidth="248.0">
+                           <children>
+                              <TextField fx:id="tfBuscarLibros" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buscarLibro" prefHeight="25.0" prefWidth="248.0" promptText="Buscar" />
+                              <CheckBox fx:id="cbBusquedaBajaLibros" mnemonicParsing="false" text="Baja" />
+                           </children>
+                        </FlowPane>
+                        <TableView fx:id="tvLibros" prefHeight="492.0" prefWidth="856.0">
+                           <columns>
+                              <TableColumn fx:id="tcCodigoLibro" prefWidth="92.72761082649231" text="Codigo" />
+                              <TableColumn fx:id="tcTituloLibro" prefWidth="204.5461883544922" text="Titulo" />
+                              <TableColumn fx:id="tcAutorLibro" prefWidth="226.36447143554688" text="Autor" />
+                              <TableColumn fx:id="tcEditorialLibro" minWidth="0.0" prefWidth="110.00048828125" text="Editorial" />
+                              <TableColumn fx:id="tcEstadoLibro" prefWidth="137.2733154296875" text="Estado" />
+                              <TableColumn fx:id="tcBajaLibro" prefWidth="84.54583740234375" text="Baja" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btnAnadirLibro" mnemonicParsing="false" onAction="#anadirLibro" text="Añadir">
+                           <tooltip>
+                              <Tooltip text="Añadir libro" />
+                           </tooltip></Button>
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabPrestamos" text="Prestamos">
+               <content>
+                  <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                     <children>
+                        <TextField fx:id="tfBuscarPrestamos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buscarPrestamo" prefHeight="25.0" prefWidth="248.0" promptText="Buscar" />
+                        <TableView fx:id="tvPrestamos" prefHeight="493.0" prefWidth="909.0">
+                           <columns>
+                              <TableColumn fx:id="tcCodigoLibroPrestamo" prefWidth="92.72761082649231" text="Codigo" />
+                              <TableColumn fx:id="tcTituloLibroPrestamo" prefWidth="106.36402893066406" text="Titulo" />
+                              <TableColumn fx:id="tcAutorLibroPrestamo" prefWidth="152.7279052734375" text="Autor" />
+                              <TableColumn fx:id="tcEditorialLibroPrestamo" minWidth="0.0" prefWidth="84.54571533203125" text="Editorial" />
+                              <TableColumn fx:id="tcDNIAlumnoPrestamo" minWidth="0.0" prefWidth="175.455078125" text="DNI Alumno" />
+                              <TableColumn fx:id="tcNombreAlumnoPrestamo" minWidth="0.0" prefWidth="188.1826171875" text="Nombre Alumno" />
+                              <TableColumn fx:id="tcFechaPrestamo" minWidth="0.0" prefWidth="106.3638916015625" text="Fecha" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btnAnadirPrestamo" mnemonicParsing="false" onAction="#anadirPrestamo" text="Añadir">
+                           <tooltip>
+                              <Tooltip text="Añadir prestamo" />
+                           </tooltip></Button>
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabHistoricoPrestamos" text="Historico Prestamos">
+               <content>
+                  <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="379.0" prefWidth="892.0" vgap="10.0">
+                     <children>
+                        <FlowPane alignment="CENTER_LEFT" hgap="75.0" prefHeight="45.0" prefWidth="255.0">
+                           <children>
+                              <TextField fx:id="tfBuscarHistoricoPrestamos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buscarHistoricoPrestamo" prefHeight="25.0" prefWidth="212.0" promptText="Buscar" />
+                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="263.0">
+                                 <children>
+                                    <Label text="Desde: " />
+                                    <DatePicker fx:id="dpHistoricoDesde" onAction="#buscarHistoricoPrestamo" prefHeight="25.0" prefWidth="175.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="263.0">
+                                 <children>
+                                    <Label text="Hasta: " />
+                                    <DatePicker fx:id="dpHistoricoHasta" onAction="#buscarHistoricoPrestamo" prefHeight="25.0" prefWidth="175.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </FlowPane>
+                        <TableView fx:id="tvHistoricoPrestamos" prefHeight="493.0" prefWidth="909.0">
+                           <columns>
+                              <TableColumn fx:id="tcCodigoLibroHistoricoPrestamo" prefWidth="92.72761082649231" text="Codigo" />
+                              <TableColumn fx:id="tcTituloLibroHistoricoPrestamo" prefWidth="106.36402893066406" text="Titulo" />
+                              <TableColumn fx:id="tcAutorLibroHistoricoPrestamo" prefWidth="102.72772216796875" text="Autor" />
+                              <TableColumn fx:id="tcEditorialLibroHistoricoPrestamo" minWidth="0.0" prefWidth="87.27301025390625" text="Editorial" />
+                              <TableColumn fx:id="tcDNIAlumnoHistoricoPrestamo" minWidth="0.0" prefWidth="120.00051879882812" text="DNI Alumno" />
+                              <TableColumn fx:id="tcNombreAlumnoHistoricoPrestamo" minWidth="0.0" prefWidth="175.45526123046875" text="Nombre Alumno" />
+                              <TableColumn fx:id="tcFechaHistoricoPrestamo" minWidth="0.0" prefWidth="100.909423828125" text="Fecha" />
+                              <TableColumn fx:id="tcFechaDevolucionHistoricoPrestamo" minWidth="0.0" prefWidth="119.09130859375" text="Devolucion" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btnAnadirHistoricoPrestamo" mnemonicParsing="false" onAction="#anadirHistoricoPrestamo" text="Añadir">
+                           <tooltip>
+                              <Tooltip text="Añadir historico prestamo" />
+                           </tooltip></Button>
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabHistoricoPrestamos1" text="Informes">
+               <content>
+                  <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+                     <children>
+                        <GridPane prefHeight="366.0" prefWidth="931.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Informe de libros:" GridPane.halignment="RIGHT">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Informe estadistico:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Informe de alumnos con calculos:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Button fx:id="btnInforme1" mnemonicParsing="false" onAction="#generarInforme1" text="Generar" GridPane.columnIndex="1">
+                                 <tooltip>
+                                    <Tooltip text="Genera un informe de los libros" />
+                                 </tooltip></Button>
+                              <Button fx:id="btnInforme2" mnemonicParsing="false" onAction="#generarInforme2" text="Generar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <tooltip>
+                                    <Tooltip text="Genera un informe estadistico" />
+                                 </tooltip></Button>
+                              <Button fx:id="btnInforme3" mnemonicParsing="false" onAction="#generarInforme3" text="Generar" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <tooltip>
+                                    <Tooltip text="Genera un informe de los alumnos con calculos" />
+                                 </tooltip></Button>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
