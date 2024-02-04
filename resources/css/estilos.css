@@ -1,0 +1,25 @@
+/* Estilos para la tabla */
+.table-view {
+    -fx-padding: 5px;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-pref-width: 115px;
+}
+
+.table-row-cell {
+    -fx-border-color: lightgray;
+}
+
+/* Estilos para los botones */
+.button {
+    -fx-background-color: #4CAF50; /* Verde */
+    -fx-text-fill: white;
+    -fx-padding: 10px 27px;
+    -fx-font-size: 11px;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
