@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe3_subinforme3" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c2a3b2a-c26a-4f62-b3d3-3c8a8762ca0b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LIBROS"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT YEAR(fecha_prestamo) AS toshi,
+COUNT(id_prestamo) AS prestamos
+FROM Historico_prestamo
+WHERE  fecha_prestamo IS NOT NULL
+GROUP BY YEAR(fecha_prestamo)]]>
+	</queryString>
+	<field name="toshi" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="toshi"/>
+		<property name="com.jaspersoft.studio.field.label" value="toshi"/>
+	</field>
+	<field name="prestamos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="prestamos"/>
+		<property name="com.jaspersoft.studio.field.label" value="prestamos"/>
+	</field>
+	<group name="toshi">
+		<groupExpression><![CDATA[$F{toshi}]]></groupExpression>
+	</group>
+	<group name="prestamos">
+		<groupExpression><![CDATA[$F{prestamos}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="225" splitType="Stretch">
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="2" y="12" width="550" height="200" uuid="4fb57e1b-b6f0-4107-a0c8-65e93c454a51"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["PRÉSTAMOS"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{toshi}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{prestamos}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</columnHeader>
+</jasperReport>

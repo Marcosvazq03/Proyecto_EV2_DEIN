@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe3_subinforme1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a7d1e80-c2fa-4a9d-9b51-0a1db8ee43a9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="LIBROS"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT COUNT(Historico_prestamo.id_prestamo) AS prestamos,
+Libro.codigo,
+Libro.titulo,
+Libro.autor,
+Libro.editorial,
+Libro.estado,
+Libro.baja
+FROM Historico_prestamo
+INNER JOIN Libro ON Libro.codigo = Historico_prestamo.codigo_libro
+GROUP BY Libro.codigo]]>
+	</queryString>
+	<field name="prestamos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="prestamos"/>
+		<property name="com.jaspersoft.studio.field.label" value="prestamos"/>
+	</field>
+	<field name="codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="titulo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="autor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="autor"/>
+		<property name="com.jaspersoft.studio.field.label" value="autor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="editorial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="editorial"/>
+		<property name="com.jaspersoft.studio.field.label" value="editorial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estado"/>
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<field name="baja" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="baja"/>
+		<property name="com.jaspersoft.studio.field.label" value="baja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Libro"/>
+	</field>
+	<group name="prestamos">
+		<groupExpression><![CDATA[$F{prestamos}]]></groupExpression>
+	</group>
+	<group name="codigo">
+		<groupExpression><![CDATA[$F{codigo}]]></groupExpression>
+	</group>
+	<group name="titulo">
+		<groupExpression><![CDATA[$F{titulo}]]></groupExpression>
+	</group>
+	<group name="autor">
+		<groupExpression><![CDATA[$F{autor}]]></groupExpression>
+	</group>
+	<group name="editorial">
+		<groupExpression><![CDATA[$F{editorial}]]></groupExpression>
+	</group>
+	<group name="estado">
+		<groupExpression><![CDATA[$F{estado}]]></groupExpression>
+	</group>
+	<group name="baja">
+		<groupExpression><![CDATA[$F{baja}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="219" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="2" y="9" width="550" height="200" uuid="a1d823d2-cc78-4ba6-9a41-1599a51a23ae"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{titulo}]]></keyExpression>
+					<valueExpression><![CDATA[$F{prestamos}]]></valueExpression>
+					<labelExpression><![CDATA[Long.toString($F{prestamos})]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</columnHeader>
+</jasperReport>
